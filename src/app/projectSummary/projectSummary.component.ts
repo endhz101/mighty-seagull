@@ -3,9 +3,9 @@ import { Select2OptionData } from 'ng2-select2';
 
 
 @Component({
-  selector: 'app-projectSummary',
-  templateUrl: './projectSummary.component.html',
-  styleUrls: ['./projectSummary.component.css']
+  selector: 'app-projectsummary',
+  templateUrl: './projectsummary.component.html',
+  styleUrls: ['./projectsummary.component.css']
 })
 export class ProjectSummaryComponent implements OnInit {
   architecture: Array<Select2OptionData>;

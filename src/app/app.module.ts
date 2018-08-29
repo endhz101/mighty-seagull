@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { SharedComponent } from './shared/shared.component';
-import { ProjectSummaryComponent } from './projectSummary/projectSummary.component';
+import { ProjectSummaryComponent } from './projectsummary/projectsummary.component';
 import { AppRoutingModule } from './app.routing.module';
 import { Select2Module } from 'ng2-select2';
 

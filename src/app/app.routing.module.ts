@@ -1,10 +1,10 @@
 import { NgModule } from "@angular/core";
 import {Routes,RouterModule} from '@angular/router';
-import { ProjectSummaryComponent } from "./projectSummary/projectSummary.component";
+import { ProjectSummaryComponent } from "./projectsummary/projectsummary.component";
 
 const appRoutes:Routes=[
-    {path:'', redirectTo:'/projectSummary', pathMatch:'full'}, 
-    {path: 'projectSummary', component:ProjectSummaryComponent},
+    {path:'', redirectTo:'/projectsummary', pathMatch:'full'}, 
+    {path: 'projectsummary', component:ProjectSummaryComponent},
 
 
 ];
