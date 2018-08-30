@@ -23,6 +23,9 @@
            </div>
        </div>
 
+
+       
+
        <div class="row  rowPadding" >         
             <div class="col-md-4">
                <label for="email">Project Architecture</label>    
@@ -33,7 +36,7 @@
                ></select2>
              </div>
         <div class="col-md-4">
-                 <label for="email">Project Project Methodology</label>
+                 <label for="email">Project Methodology</label>
                  <select2  
                  [data]="methodology"
                  [options]="selectOptions"     
@@ -54,6 +57,54 @@
         <br>
         <div class="col-md-12">
                 <p>Technology</p>
+        </div>
+        <div class="row  rowPadding" >     
+            <div class="col-md-4">
+                <label for="email">Frontend Technology</label>
+                <select2  
+                [data]="frontend"
+                [options]="selectOptions"     
+                [value]="startValue"  
+                ></select2>    
+            </div>
+            <div class="col-md-4">
+                <label for="email">Backend Technology</label>
+                <select2  
+                [data]="backend"
+                [options]="selectOptions"     
+                [value]="startValue"  
+                ></select2>    
+            </div>
+        </div>
+        <div class="row  rowPadding" >     
+            <div class="col-md-4">
+                <label *ngFor="let item of selectedFrontend;let i =index">
+                  
+                </label>
+            </div>
+            <div class="col-md-4">
+              
+            </div>
+        </div>
+
+
+        <div class="row  rowPadding" >     
+            <div class="col-md-4">
+                <label for="email">Reporting Technology</label>
+                <select2  
+                [data]="reporting"
+                [options]="selectOptions"     
+                [value]="startValue"  
+                ></select2>    
+            </div>
+            <div class="col-md-4">
+                <label for="email">Storage Technology</label>
+                <select2  
+                [data]="storage"
+                [options]="selectOptions"     
+                [value]="startValue"  
+                ></select2>    
+            </div>
         </div>
 </div>
 
