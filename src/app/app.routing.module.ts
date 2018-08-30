@@ -4,7 +4,7 @@ import { ProjectSummaryComponent } from "./projectsummary/projectsummary.compone
 import { CostmodelComponent } from "./costmodel/costmodel.component";
 
 const appRoutes:Routes=[
-    {path:'', redirectTo:'/projectsUmmary', pathMatch:'full'}, 
+    {path:'', redirectTo:'/projectsummary', pathMatch:'full'}, 
     {path: 'projectsummary', component:ProjectSummaryComponent},
     {path: 'costmodel', component:CostmodelComponent}
 
