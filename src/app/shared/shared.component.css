@@ -1,9 +1,8 @@
 
-
-.link a{    
-    color:#b9c8c4 ;            
-    padding: 2px 20px 20px;
-   
+.link a {
+  color: #b9c8c4;
+  padding: 2px 20px 20px;
+  cursor: pointer;
 }
 .active{
     color: #000 !important;
@@ -11,9 +10,6 @@
 }
 .link a:hover {
     color: #000;
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;    
     /* text-decoration: underline; */
 }
-
-
-
