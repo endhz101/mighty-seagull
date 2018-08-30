@@ -6,3 +6,27 @@
 .rowPadding{
      margin:10px 100px 5px 10px;
 }
+
+.circleTech{
+     border-style: solid;
+     border-color:#275fba;
+     border-radius: 10px;
+     background-color:#275fba;
+     padding: 3px 2px 3px 2px !important;
+     margin : 0px 0px 3px 3px !important;
+     color:white;
+    
+     font-size: 10px;
+  
+}
+.circlePadding{
+    margin:5px 20px 20px 0px;
+}
+.noPadding{
+    padding:0px;
+    margin:0px;
+    min-width: 0px;
+}
+.paddingtop{
+    padding-top: 2px;
+}

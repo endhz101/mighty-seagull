@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
+import { TechnologyItem } from '../model/technologyItem.model';
+
+
 
 
 @Component({
@@ -10,12 +13,13 @@ import { Select2OptionData } from 'ng2-select2';
 export class ProjectSummaryComponent implements OnInit {
   architecture: Array<Select2OptionData>;
   methodology: Array<Select2OptionData>;
-  frontend: Array<Select2OptionData>;
-  backend:Array<Select2OptionData>;
-  reporting:Array<Select2OptionData>;
-  storage:Array<Select2OptionData>;
+  //Option
+  frontendOption: Array<Select2OptionData>;
+  backendOption:Array<Select2OptionData>;
+  reportingOption:Array<Select2OptionData>;
+  storageOption:Array<Select2OptionData>;
   selectOptions={};
-  startValue:string; 
+  //Selected 
   selectedFrontend= [];
   selectedBackend= [];
   selectedStorage= [];
@@ -46,7 +50,6 @@ export class ProjectSummaryComponent implements OnInit {
         text: 'SaaS in Cloud'
       }  
     ];
-
     this.methodology = [
       {
         id: '1',
@@ -62,8 +65,7 @@ export class ProjectSummaryComponent implements OnInit {
         text: 'Others'
       }
     ];
-
-    this.frontend = [
+    this.frontendOption = [
       {
         id: '1',
         text: 'Ionic/Angular'
@@ -85,9 +87,7 @@ export class ProjectSummaryComponent implements OnInit {
         text: 'VB / VBA'
       }
     ];
-
-
-    this.backend = [
+    this.backendOption = [
       {
         id: '1',
         text: 'ASP.Net'
@@ -109,9 +109,7 @@ export class ProjectSummaryComponent implements OnInit {
         text: 'C / C++'
       }
     ];
-
-
-    this.reporting = [
+    this.reportingOption = [
       {
         id: '1',
         text: 'OBIEE'
@@ -129,12 +127,11 @@ export class ProjectSummaryComponent implements OnInit {
         text: 'Crystal Report'
       },
       {
-        id: '5',     
-        text: 'Oracle Report'
+        id: '5',
+        text: "Oracle Report"
       }
     ];
-
-    this.storage = [
+    this.storageOption = [
       {
         id: '1',
         text: 'RDBMS'
@@ -156,16 +153,64 @@ export class ProjectSummaryComponent implements OnInit {
         text: 'MySql'
       }
     ];
-
-
-
     this.selectOptions={ 
       placeholder: { id: '', text: 'Select Record' },
       width: "100%",   
       name:'empPosition'
      }
-     this.startValue = "0";  
 
+
+  }
+
+
+  fontendChanged(e: any): void {   
+
+    const item = new TechnologyItem(e.data[0].id,e.data[0].text)    
+    
+    const exist= this.selectedFrontend.find(x=>x.frontendId==item.technologyItemId);
+    if (exist==undefined) this.selectedFrontend.push(item);
+  }
+
+  frontendSelectedRemove(index:number)
+  {
+    this.selectedFrontend.splice(index,1);
+  }
+
+  backendChanged(e: any): void {   
+
+    const item = new TechnologyItem(e.data[0].id,e.data[0].text)        
+    const exist= this.selectedBackend.find(x=>x.back==item.technologyItemId);
+    if (exist==undefined) this.selectedBackend.push(item);
+  }
+
+  backendSelectedRemove(index:number)
+  {    
+    this.selectedBackend.splice(index,1);
+  }
+
+
+  reportingChanged(e: any): void {   
+
+    const item = new TechnologyItem(e.data[0].id,e.data[0].text)        
+    const exist= this.selectedReporting.find(x=>x.back==item.technologyItemId);
+    if (exist==undefined) this.selectedReporting.push(item);
+  }
+
+  reportingSelectedRemove(index:number)
+  {    
+    this.selectedReporting.splice(index,1);
+  }
+
+  storageChanged(e: any): void {   
+
+    const item = new TechnologyItem(e.data[0].id,e.data[0].text)        
+    const exist= this.selectedStorage.find(x=>x.back==item.technologyItemId);
+    if (exist==undefined) this.selectedStorage.push(item);
+  }
+
+  storageSelectedRemove(index:number)
+  {    
+    this.selectedStorage.splice(index,1);
   }
 
   

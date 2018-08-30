@@ -18,7 +18,7 @@ export class SharedComponent implements OnInit {
   }
   gotoProjectSummary()
   {
-    this.router.navigate(['/projectSummary']);    
+    this.router.navigate(['/projectsummary']);    
   }
   gotocostmodel()
   {
