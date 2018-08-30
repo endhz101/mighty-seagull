@@ -24,4 +24,7 @@ export class SharedComponent implements OnInit {
   {
     this.router.navigate(['/costmodel']);    
   }
+  gotoFpa(){
+    this.router.navigate(['/fpa']);
+  }
 }
