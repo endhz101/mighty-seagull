@@ -32,7 +32,7 @@
                <select2  
                [data]="architecture"
                [options]="selectOptions"     
-               [value]="startValue"  
+               [value]="0"  
                ></select2>
              </div>
         <div class="col-md-4">
@@ -40,7 +40,7 @@
                  <select2  
                  [data]="methodology"
                  [options]="selectOptions"     
-                 [value]="startValue"  
+                 [value]="0"  
                  ></select2>    
         </div>
         <div class="col-md-4">
@@ -59,53 +59,92 @@
                 <p>Technology</p>
         </div>
         <div class="row  rowPadding" >     
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <label for="email">Frontend Technology</label>
                 <select2  
-                [data]="frontend"
+                [data]="frontendOption"
                 [options]="selectOptions"     
-                [value]="startValue"  
+                [value]="0"  
+                (valueChanged)="fontendChanged($event)"    
                 ></select2>    
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <label for="email">Backend Technology</label>
                 <select2  
-                [data]="backend"
+                [data]="backendOption"
                 [options]="selectOptions"     
-                [value]="startValue"  
+                [value]="0"  
+                (valueChanged)="backendChanged($event)" 
                 ></select2>    
             </div>
         </div>
         <div class="row  rowPadding" >     
-            <div class="col-md-4">
-                <label *ngFor="let item of selectedFrontend;let i =index">
-                  
-                </label>
+            <div class="col-md-6">
+                <div class="row circlePadding">
+                        <div class="col-md-2 circleTech" *ngFor="let item of selectedFrontend;let i =index">
+                               <div class="row">
+                                    <div class="col-md-9 text-center paddingtop">{{item.description}}</div>  
+                                    <div  class="col-md-3 noPadding pull-right"><i class="fa fa-times fa-2x" aria-hidden="true" (click)=frontendSelectedRemove(i)></i></div>                              
+                               </div>                              
+                        </div>                      
+                </div>          
             </div>
-            <div class="col-md-4">
-              
+            <div class="col-md-6">
+                    <div class="row circlePadding">
+                            <div class="col-md-2 circleTech" *ngFor="let item of selectedBackend;let i =index">
+                                   <div class="row">
+                                        <div class="col-md-9 text-center paddingtop" >{{item.description}}</div>  
+                                        <div  class="col-md-3 noPadding pull-right"><i class="fa fa-times fa-2x " aria-hidden="true" (click)=backendSelectedRemove(i)></i></div>                              
+                                   </div>                              
+                            </div>                      
+                    </div>     
             </div>
         </div>
 
 
         <div class="row  rowPadding" >     
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <label for="email">Reporting Technology</label>
                 <select2  
-                [data]="reporting"
+                [data]="reportingOption"
                 [options]="selectOptions"     
-                [value]="startValue"  
+                [value]="0"  
+                (valueChanged)="reportingChanged($event)" 
                 ></select2>    
             </div>
-            <div class="col-md-4">
+            <div class="col-md-6">
                 <label for="email">Storage Technology</label>
                 <select2  
-                [data]="storage"
+                [data]="storageOption"
                 [options]="selectOptions"     
-                [value]="startValue"  
+                [value]="0"  
+                (valueChanged)="storageChanged($event)" 
                 ></select2>    
             </div>
         </div>
+
+        <div class="row  rowPadding" >     
+                <div class="col-md-6">
+                    <div class="row circlePadding">
+                            <div class="col-md-2 circleTech" *ngFor="let item of selectedReporting;let i =index">
+                                   <div class="row">
+                                        <div class="col-md-9 text-center paddingtop">{{item.description}}</div>  
+                                        <div  class="col-md-3 noPadding pull-right"><i class="fa fa-times fa-2x" aria-hidden="true" (click)=reportingSelectedRemove(i)></i></div>                              
+                                   </div>                              
+                            </div>                      
+                    </div>          
+                </div>
+                <div class="col-md-6">
+                        <div class="row circlePadding">
+                                <div class="col-md-2 circleTech" *ngFor="let item of selectedStorage;let i =index">
+                                       <div class="row">
+                                            <div class="col-md-9 text-center paddingtop" >{{item.description}}</div>  
+                                            <div  class="col-md-3 noPadding pull-right"><i class="fa fa-times fa-2x " aria-hidden="true" (click)=storageSelectedRemove(i)></i></div>                              
+                                       </div>                              
+                                </div>                      
+                        </div>     
+                </div>
+            </div>
 </div>
 
 

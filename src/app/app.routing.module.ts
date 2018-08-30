@@ -10,6 +10,7 @@ const appRoutes:Routes=[
     {path: 'fpa', component:FpaComponent},
     {path: 'costmodel', component:CostmodelComponent}
 
+
 ];
 
 @NgModule({
