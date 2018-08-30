@@ -20,7 +20,7 @@ export class SharedComponent implements OnInit {
   {
     this.router.navigate(['/projectSummary']);    
   }
-  gotocostmodel()
+  gotoCostModel()
   {
     this.router.navigate(['/costmodel']);    
   }
