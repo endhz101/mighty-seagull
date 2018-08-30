@@ -1,12 +1,10 @@
-<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">  
-  <img [src]="logo" style="width:130px;height: 43px;" class="my-0 mr-md-auto font-weight-normal"  alt="...">
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <img [src]="logo" style="width:130px;height: 43px;" class="my-0 mr-md-auto font-weight-normal" alt="...">
   <nav class="my-0 mr-md-auto link">
+    <a *ngFor="let item of listNavUrl;let i =index" class={{item.myclass}} (click)=routeTo(item)>
+      {{item.description}}
 
-    <a class="active" (click)="gotoProjectSummary()">Project Summary</a>
-    <a class="" (click)="gotoFpa()">FPA</a>
-    <a class="">Implementation</a>
-    <a class="" >Project Estimation</a>
-    <a class="" (click)="gotoCostModel()">Cost Model</a>
+    </a>
   </nav>
-  <a  href="#"> <img [src]="userDefaultImage"  style="width:30px;height:30px" class="rounded-circle mx-auto d-block" alt="..."></a>   
+  <a href="#"> <img [src]="userDefaultImage" style="width:30px;height:30px" class="rounded-circle mx-auto d-block" alt="..."></a>
 </div>
