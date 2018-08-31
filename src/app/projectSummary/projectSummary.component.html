@@ -82,9 +82,8 @@
             <div class="col-md-6">
                 <div class="row circlePadding">
                         <div class="col-md-2 circleTech" *ngFor="let item of selectedFrontend;let i =index">
-                               <div class="row">
-                                    <div class="col-md-9 text-center paddingtop">{{item.description}}</div>  
-                                    <div  class="col-md-3 noPadding pull-right"><i class="fa fa-times fa-2x" aria-hidden="true" (click)=frontendSelectedRemove(i)></i></div>                              
+                               <div>
+                                    <div class="col-md-9 text-center paddingtop">{{item.description}}<i class="fa fa-times fa-2x pull-right" aria-hidden="true" (click)=frontendSelectedRemove(i)></i></div>
                                </div>                              
                         </div>                      
                 </div>          
@@ -92,9 +91,8 @@
             <div class="col-md-6">
                     <div class="row circlePadding">
                             <div class="col-md-2 circleTech" *ngFor="let item of selectedBackend;let i =index">
-                                   <div class="row">
-                                        <div class="col-md-9 text-center paddingtop" >{{item.description}}</div>  
-                                        <div  class="col-md-3 noPadding pull-right"><i class="fa fa-times fa-2x " aria-hidden="true" (click)=backendSelectedRemove(i)></i></div>                              
+                                   <div>
+                                        <div class="col-md-9 text-center paddingtop" >{{item.description}}<i class="fa fa-times fa-2x pull-right" aria-hidden="true" (click)=backendSelectedRemove(i)></i></div>  
                                    </div>                              
                             </div>                      
                     </div>     
@@ -127,9 +125,8 @@
                 <div class="col-md-6">
                     <div class="row circlePadding">
                             <div class="col-md-2 circleTech" *ngFor="let item of selectedReporting;let i =index">
-                                   <div class="row">
-                                        <div class="col-md-9 text-center paddingtop">{{item.description}}</div>  
-                                        <div  class="col-md-3 noPadding pull-right"><i class="fa fa-times fa-2x" aria-hidden="true" (click)=reportingSelectedRemove(i)></i></div>                              
+                                   <div>
+                                        <div class="col-md-9 text-center paddingtop">{{item.description}}<i class="fa fa-times fa-2x pull-right" aria-hidden="true" (click)=reportingSelectedRemove(i)></i></div>  
                                    </div>                              
                             </div>                      
                     </div>          
@@ -137,10 +134,9 @@
                 <div class="col-md-6">
                         <div class="row circlePadding">
                                 <div class="col-md-2 circleTech" *ngFor="let item of selectedStorage;let i =index">
-                                       <div class="row">
-                                            <div class="col-md-9 text-center paddingtop" >{{item.description}}</div>  
-                                            <div  class="col-md-3 noPadding pull-right"><i class="fa fa-times fa-2x " aria-hidden="true" (click)=storageSelectedRemove(i)></i></div>                              
-                                       </div>                              
+                                  <div>                                    
+                                    <div class="col-md-9 text-center paddingtop">{{item.description}}<i class="fa fa-times fa-2x pull-right" aria-hidden="true" (click)=storageSelectedRemove(i)></i></div>
+                                  </div>                              
                                 </div>                      
                         </div>     
                 </div>
