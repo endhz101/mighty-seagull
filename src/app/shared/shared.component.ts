@@ -34,6 +34,10 @@ export class SharedComponent implements OnInit {
         this.router.navigate(['/projectsummary']);
         break;
       }
+      case 1: {
+        this.router.navigate(['/fpa']);
+        break;
+      }
       case 4: {
         this.router.navigate(['/costmodel']);
         break;
