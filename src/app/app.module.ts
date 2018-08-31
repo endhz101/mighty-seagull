@@ -9,6 +9,7 @@ import { FpaComponent } from './fpa/fpa.component';
 import { AppRoutingModule } from './app.routing.module';
 import { Select2Module } from 'ng2-select2';
 import { EstimationComponent} from './estimation/estimation.component';
+import {HotTableModule} from '@handsontable/angular';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { EstimationComponent} from './estimation/estimation.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    Select2Module
+    Select2Module,
+    HotTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
