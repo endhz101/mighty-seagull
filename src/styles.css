@@ -1,10 +1,13 @@
+@import '~handsontable/dist/handsontable.full.css';
+
+
 /* You can add global styles to this file, and also import other style files */
 body {
     font-size: 12px !important;
 }
 
 intput {
-    font-size: 12px !important; 
+    font-size: 12px !important;
 }
 
 .form-control{
@@ -14,8 +17,8 @@ intput {
 
 .select2-selection--single {
     height: 34px !important;
-    
+
 }
  .select2-selection__rendered{
-    line-height: 30px !important;    
+    line-height: 30px !important;
  }
