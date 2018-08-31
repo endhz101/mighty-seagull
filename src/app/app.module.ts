@@ -8,6 +8,7 @@ import { CostmodelComponent } from './costmodel/costmodel.component';
 import { FpaComponent } from './fpa/fpa.component';
 import { AppRoutingModule } from './app.routing.module';
 import { Select2Module } from 'ng2-select2';
+import { EstimationComponent} from './estimation/estimation.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { Select2Module } from 'ng2-select2';
     SharedComponent,
     ProjectSummaryComponent,
     CostmodelComponent,
-    FpaComponent
+    FpaComponent,
+    EstimationComponent
   ],
   imports: [
     BrowserModule,
