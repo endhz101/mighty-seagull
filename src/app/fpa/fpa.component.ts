@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {FPAs} from '../data-services/fpa.services';
 
 @Component({
   selector: 'app-fpa',
@@ -6,12 +7,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./fpa.component.css']
 })
 export class FpaComponent implements OnInit {
-
-  dataset: any[] = [
-    {id: 1, module: 'Registration', description: 'Registration System'},
-    {id: 1, module: 'Registration', description: 'Registration System'},
-    {id: 1, module: 'Registration', description: 'Registration System'}
-  ];
+  dataset = FPAs;
 
   constructor() { }
 
