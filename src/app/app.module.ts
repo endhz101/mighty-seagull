@@ -11,6 +11,7 @@ import { Select2Module } from 'ng2-select2';
 import { EstimationComponent} from './estimation/estimation.component';
 import {HotTableModule} from '@handsontable/angular';
 import {ImplementationComponent} from './implementation/implementation.component'
+import {MatTable} from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import {ImplementationComponent} from './implementation/implementation.component
     BrowserModule,
     AppRoutingModule,
     Select2Module,
-    HotTableModule
+    HotTableModule,
+    MatTable
   ],
   providers: [],
   bootstrap: [AppComponent]

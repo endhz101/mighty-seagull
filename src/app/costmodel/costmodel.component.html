@@ -1,5 +1,27 @@
-<p>
-  costmodel works!
-</p>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table table-striped">
 
-changes
+  <ng-container matColumnDef="onsite">
+    <th mat-header-cell *matHeaderCellDef> ONSITE </th>
+    <td mat-cell *matCellDef="let element"> {{element.onsite}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="role">
+    <th mat-header-cell *matHeaderCellDef> NAME </th>
+    <td mat-cell *matCellDef="let element"> {{element.role}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="grade">
+    <th mat-header-cell *matHeaderCellDef> GRADE </th>
+    <td mat-cell *matCellDef="let element"> {{element.grade}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="module">
+    <th mat-header-cell *matHeaderCellDef> MODULE </th>
+    <td mat-cell *matCellDef="let element td4"> {{element.module}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+
