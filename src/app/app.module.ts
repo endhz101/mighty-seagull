@@ -10,6 +10,7 @@ import { AppRoutingModule } from './app.routing.module';
 import { Select2Module } from 'ng2-select2';
 import { EstimationComponent} from './estimation/estimation.component';
 import {HotTableModule} from '@handsontable/angular';
+import {ImplementationComponent} from './implementation/implementation.component'
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {HotTableModule} from '@handsontable/angular';
     ProjectSummaryComponent,
     CostmodelComponent,
     FpaComponent,
-    EstimationComponent
+    EstimationComponent,
+    ImplementationComponent
   ],
   imports: [
     BrowserModule,
