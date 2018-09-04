@@ -31,3 +31,18 @@ intput {
   line-height: 1.2;
   padding-left: 50px;
 }
+
+/** costmodel styles **/
+table {
+  width: 100%;
+}
+
+td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
+  padding: 0;
+  border-bottom-width: 0;
+  border-bottom-style: solid;
+}
+td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+  padding-right: 24px;
+  border-right: solid 1px grey;
+}
