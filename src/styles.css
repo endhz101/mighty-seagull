@@ -24,10 +24,20 @@ intput {
 }
 .page-heading{
   color: #044a8f;
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size:22px;
+  /*margin-bottom: 0.5rem;*/
   font-family: inherit;
   font-weight: 500;
   line-height: 1.2;
   padding-left: 50px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.btn-fpa{
+  float: right;
+  min-width: 83px;
+  margin-top: 10px;
+  margin-right: 10px;
+  font-size: 12px !important;
 }
