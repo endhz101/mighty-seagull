@@ -1,34 +1,46 @@
-<div>
-  <hot-table
-    class="hot"
-    [data]="dataset"
-    [colHeaders]="true"
-    [rowHeaders]="true">
-    <hot-column data="id" [readOnly]="true" title="ID"></hot-column>
-    <hot-column data="module" title="Module"></hot-column>
-    <hot-column data="description" title="Description"></hot-column>
 
-    <hot-column data="address" title="RET"></hot-column>
-    <hot-column data="address" title="DET"></hot-column>
-    <hot-column data="address" title="Technology"></hot-column>
 
-    <hot-column data="address" title="RET"></hot-column>
-    <hot-column data="address" title="DET"></hot-column>
-    <hot-column data="address" title="Technology"></hot-column>
+<div class="col-md-12 card" style="padding:0px;margin:0px">
+  <div class="row">
+    <div class="col-md-4 page-heading"><p class="page-heading">FPA</p></div>
+    <div class="col-md-8">FPA</div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <hot-table
+        class="hot"
+        style="width:100%"
+        [data]="dataset"
+        [colHeaders]="true"
+        [rowHeaders]="true">
+        <hot-column data="id" [readOnly]="true" title="ID"></hot-column>
+        <hot-column data="module" title="Module"></hot-column>
+        <hot-column data="description" title="Description"></hot-column>
 
-    <hot-column data="address" title="FTR"></hot-column>
-    <hot-column data="address" title="DET"></hot-column>
-    <hot-column data="address" title="Technology"></hot-column>
+        <hot-column data="ilf_ret" title="RET"></hot-column>
+        <hot-column data="ilf_det" title="DET"></hot-column>
+        <hot-column data="ilf_technology" title="Technology"></hot-column>
 
-    <hot-column data="address" title="FTR"></hot-column>
-    <hot-column data="address" title="DET"></hot-column>
-    <hot-column data="address" title="Technology"></hot-column>
+        <hot-column data="eif_ret" title="RET"></hot-column>
+        <hot-column data="eif_det" title="DET"></hot-column>
+        <hot-column data="eif_technology" title="Technology"></hot-column>
 
-    <hot-column data="address" title="FTR"></hot-column>
-    <hot-column data="address" title="DET"></hot-column>
-    <hot-column data="address" title="Technology"></hot-column>
+        <hot-column data="ei_ftr" title="FTR"></hot-column>
+        <hot-column data="ei_det" title="DET"></hot-column>
+        <hot-column data="ei_technology" title="Technology"></hot-column>
 
-    <hot-column data="address" title="Reuse %"></hot-column>
+        <hot-column data="eo_ftr" title="FTR"></hot-column>
+        <hot-column data="eo_det" title="DET"></hot-column>
+        <hot-column data="eo_technology" title="Technology"></hot-column>
 
-  </hot-table>
+        <hot-column data="eq_ftr" title="FTR"></hot-column>
+        <hot-column data="eq_det" title="DET"></hot-column>
+        <hot-column data="eq_technology" title="Technology"></hot-column>
+
+        <hot-column data="reusePercentage" title="Reuse %"></hot-column>
+
+      </hot-table>
+    </div>
+  </div>
 </div>
+
