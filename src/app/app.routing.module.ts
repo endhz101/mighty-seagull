@@ -3,15 +3,16 @@ import {Routes,RouterModule} from '@angular/router';
 import { ProjectSummaryComponent } from "./projectsummary/projectsummary.component";
 import { CostmodelComponent } from "./costmodel/costmodel.component";
 import { FpaComponent } from "./fpa/fpa.component";
-import { EstimationComponent } from './estimation/estimation.component';
+import {EstimationComponent} from "./estimation/estimation.component";
+import { ImplementationComponent } from './implementation/implementation.component';
 
 const appRoutes:Routes=[
     {path:'', redirectTo:'/projectsummary', pathMatch:'full'},
     { path: 'projectsummary', component:ProjectSummaryComponent},
     {path: 'fpa', component:FpaComponent},
     {path: 'costmodel', component:CostmodelComponent},
-    {path: 'estimation', component:EstimationComponent}
-
+    {path: 'estimation', component:EstimationComponent},
+    {path: 'implementation', component:ImplementationComponent}
 ];
 
 @NgModule({

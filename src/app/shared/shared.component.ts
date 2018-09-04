@@ -18,7 +18,7 @@ export class SharedComponent implements OnInit {
     new NavUrl(1, "FPA", ""),
     new NavUrl(2, "Implementation", ""),
     new NavUrl(3, "Project Estimation", ""),
-    new NavUrl(4, "Cost Model", "")
+    new NavUrl(4, "Cost Model", ""),
   ]
 
   constructor(private router: Router, private render: Renderer) { }
@@ -36,6 +36,10 @@ export class SharedComponent implements OnInit {
       }
       case 1: {
         this.router.navigate(['/fpa']);
+        break;
+      }
+      case 2: {
+        this.router.navigate(['/implementation']);
         break;
       }
       case 3: {
