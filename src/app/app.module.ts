@@ -12,6 +12,9 @@ import { EstimationComponent} from './estimation/estimation.component';
 import { HotTableModule} from '@handsontable/angular';
 import { ImplementationComponent} from './implementation/implementation.component'
 import { MatInputModule, MatTableModule, MatToolbarModule } from '@angular/material';
+import { ProjectSummaryStorageServices } from './data-storage-services/projectsummary.storage.services';
+import { HttpClientModule } from '@angular/common/http';
+import { ProjectSummaryServices } from './data-services/projectsummary.services';
 
 @NgModule({
   declarations: [
@@ -28,9 +31,10 @@ import { MatInputModule, MatTableModule, MatToolbarModule } from '@angular/mater
     AppRoutingModule,
     Select2Module,
     HotTableModule,
-    MatTableModule
+    MatTableModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ProjectSummaryStorageServices,ProjectSummaryServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,143 +1,153 @@
 <div class="col-md-12 card" style="padding:0px;margin:0px">
-    <div class="col-md-12" style="padding-top:5px">
-        <strong style="color:darkblue">Project Estimation</strong>
-    </div>  
-    <hr>   
-    <div class="col-md-12">
-        <p>Resource Estimation for Development Project</p>
+  <div class="col-md-12" style="padding-top:5px">
+    <strong style="color:darkblue">Project Estimation</strong>
+  </div>
+  <hr>
+  <div class="col-md-12">
+    <p>Resource Estimation for Development Project</p>
+  </div>
+
+
+  <div class="row  rowPadding">
+    <div class="col-md-4">
+      <label >Project ID</label>
+      <input type="text" class="form-control" placeholder="Project ID">
     </div>
+    <div class="col-md-4">
+      <label >Project Name</label>
+      <input type="text" class="form-control" placeholder="Project Name">
+    </div>
+    <div class="col-md-4">
+      <label >Date</label>
+      <input type="text" class="form-control" placeholder="Date">
+    </div>
+  </div>
 
- 
-       <div class="row  rowPadding" >         
-           <div class="col-md-4">
-             <label for="email">Project ID</label>
-              <input type="email" class="form-control" placeholder="Project ID">
-            </div>
-            <div class="col-md-4">
-                <label for="email">Project Name</label>
-                <input type="email" class="form-control" placeholder="Project Name">
-           </div>
-           <div class="col-md-4"> 
-                <label for="email">Date</label>
-                <input type="email" class="form-control" placeholder="Date">
-           </div>
-       </div>
-
-       <div class="row  rowPadding" >         
-            <div class="col-md-4">
-               <label for="email">Project Architecture</label>    
-               <select2  
-               [data]="architecture"
-               [options]="selectOptions"     
-               [value]="0"  
-               ></select2>
-             </div>
-        <div class="col-md-4">
-                 <label for="email">Project Methodology</label>
-                 <select2  
-                 [data]="methodology"
-                 [options]="selectOptions"     
-                 [value]="0"  
-                 ></select2>    
+  <div class="row  rowPadding">
+    <div class="col-md-4">
+      <label >Project Architecture</label>
+      <select2 [data]="architecture"
+               [options]="selectOptions"
+               [value]="0"></select2>
+    </div>
+    <div class="col-md-4">
+      <label>Project Methodology</label>
+      <select2 [data]="methodology"
+               [options]="selectOptions"
+               [value]="0"></select2>
+    </div>
+    <div class="col-md-4">
+      <label >Estimation Period</label>
+      <input type="text" class="form-control" placeholder="Estimation Period">
+    </div>
+  </div>
+  <div class="row  rowPadding">
+    <div class="col-md-4">
+      <label>Project Duration</label>
+      <input type="text" class="form-control" placeholder="Project Duration">
+    </div>
+  </div>
+  <br>
+  <div class="col-md-12">
+    <p>Technology</p>
+  </div>
+  <div class="row  rowPadding">
+    <div class="col-md-6">
+      <label >Frontend Technology</label>
+      <select2 [data]="frontendOption"
+               [options]="selectOptions"
+               [value]="0"
+               (valueChanged)="fontendChanged($event)"></select2>
+    </div>
+    <div class="col-md-6">
+      <label >Backend Technology</label>
+      <select2 [data]="backendOption"
+               [options]="selectOptions"
+               [value]="0"
+               (valueChanged)="backendChanged($event)"></select2>
+    </div>
+  </div>
+  <div class="row  rowPadding">
+    <div class="col-md-6">
+      <div class="row circlePadding">
+        <div class="col-md-2 circleTech" *ngFor="let item of selectedFrontend;let i =index">
+          <div>
+            <div class="col-md-9 text-center paddingtop">{{item.description}}<i class="fa fa-times fa-2x pull-right" aria-hidden="true" (click)=frontendSelectedRemove(i)></i></div>
+          </div>
         </div>
-        <div class="col-md-4">
-                 <label for="email">Estimation Period</label>
-                 <input type="email" class="form-control" placeholder="Estimation Period">
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row circlePadding">
+        <div class="col-md-2 circleTech" *ngFor="let item of selectedBackend;let i =index">
+          <div>
+            <div class="col-md-9 text-center paddingtop">{{item.description}}<i class="fa fa-times fa-2x pull-right" aria-hidden="true" (click)=backendSelectedRemove(i)></i></div>
+          </div>
         </div>
-        </div>
-        <div class="row  rowPadding" >         
-                <div class="col-md-4">
-                   <label for="email">Project Duration</label>
-                   <input type="email" class="form-control" placeholder="Project Duration">
-                 </div>               
-        </div>
-        <br>
-        <div class="col-md-12">
-                <p>Technology</p>
-        </div>
-        <div class="row  rowPadding" >     
-            <div class="col-md-6">
-                <label for="email">Frontend Technology</label>
-                <select2  
-                [data]="frontendOption"
-                [options]="selectOptions"     
-                [value]="0"  
-                (valueChanged)="fontendChanged($event)"    
-                ></select2>    
-            </div>
-            <div class="col-md-6">
-                <label for="email">Backend Technology</label>
-                <select2  
-                [data]="backendOption"
-                [options]="selectOptions"     
-                [value]="0"  
-                (valueChanged)="backendChanged($event)" 
-                ></select2>    
-            </div>
-        </div>
-        <div class="row  rowPadding" >     
-            <div class="col-md-6">
-                <div class="row circlePadding">
-                        <div class="col-md-2 circleTech" *ngFor="let item of selectedFrontend;let i =index">
-                               <div>
-                                    <div class="col-md-9 text-center paddingtop">{{item.description}}<i class="fa fa-times fa-2x pull-right" aria-hidden="true" (click)=frontendSelectedRemove(i)></i></div>
-                               </div>                              
-                        </div>                      
-                </div>          
-            </div>
-            <div class="col-md-6">
-                    <div class="row circlePadding">
-                            <div class="col-md-2 circleTech" *ngFor="let item of selectedBackend;let i =index">
-                                   <div>
-                                        <div class="col-md-9 text-center paddingtop" >{{item.description}}<i class="fa fa-times fa-2x pull-right" aria-hidden="true" (click)=backendSelectedRemove(i)></i></div>  
-                                   </div>                              
-                            </div>                      
-                    </div>     
-            </div>
-        </div>
+      </div>
+    </div>
+  </div>
 
 
-        <div class="row  rowPadding" >     
-            <div class="col-md-6">
-                <label for="email">Reporting Technology</label>
-                <select2  
-                [data]="reportingOption"
-                [options]="selectOptions"     
-                [value]="0"  
-                (valueChanged)="reportingChanged($event)" 
-                ></select2>    
-            </div>
-            <div class="col-md-6">
-                <label for="email">Storage Technology</label>
-                <select2  
-                [data]="storageOption"
-                [options]="selectOptions"     
-                [value]="0"  
-                (valueChanged)="storageChanged($event)" 
-                ></select2>    
-            </div>
-        </div>
+  <div class="row  rowPadding">
+    <div class="col-md-6">
+      <label >Reporting Technology</label>
+      <select2 [data]="reportingOption"
+               [options]="selectOptions"
+               [value]="0"
+               (valueChanged)="reportingChanged($event)"></select2>
+    </div>
+    <div class="col-md-6">
+      <label >Storage Technology</label>
+      <select2 [data]="storageOption"
+               [options]="selectOptions"
+               [value]="0"
+               (valueChanged)="storageChanged($event)"></select2>
+    </div>
+  </div>
 
-        <div class="row  rowPadding" >     
-                <div class="col-md-6">
-                    <div class="row circlePadding">
-                            <div class="col-md-2 circleTech" *ngFor="let item of selectedReporting;let i =index">
-                                   <div>
-                                        <div class="col-md-9 text-center paddingtop">{{item.description}}<i class="fa fa-times fa-2x pull-right" aria-hidden="true" (click)=reportingSelectedRemove(i)></i></div>  
-                                   </div>                              
-                            </div>                      
-                    </div>          
-                </div>
-                <div class="col-md-6">
-                        <div class="row circlePadding">
-                                <div class="col-md-2 circleTech" *ngFor="let item of selectedStorage;let i =index">
-                                  <div>                                    
-                                    <div class="col-md-9 text-center paddingtop">{{item.description}}<i class="fa fa-times fa-2x pull-right" aria-hidden="true" (click)=storageSelectedRemove(i)></i></div>
-                                  </div>                              
-                                </div>                      
-                        </div>     
-                </div>
-            </div>
+  <div class="row  rowPadding">
+    <div class="col-md-6">
+      <div class="row circlePadding">
+        <div class="col-md-2 circleTech" *ngFor="let item of selectedReporting;let i =index">
+          <div>
+            <div class="col-md-9 text-center paddingtop">{{item.description}}<i class="fa fa-times fa-2x pull-right" aria-hidden="true" (click)=reportingSelectedRemove(i)></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="row circlePadding">
+        <div class="col-md-2 circleTech" *ngFor="let item of selectedStorage;let i =index">
+          <div>
+            <div class="col-md-9 text-center paddingtop">{{item.description}}<i class="fa fa-times fa-2x pull-right" aria-hidden="true" (click)=storageSelectedRemove(i)></i></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-md-12 card" style="padding:0px;margin:0px">
+  <div class="col-md-12" style="padding-top:5px">
+    <strong style="color:darkblue">Project Estimation</strong>
+  </div>
+  <hr>
+  <div class="col-md-12">
+    <p>Resource Estimation for Development Project</p>
+  </div>
+
+  <div class="row  rowPadding">
+    <div class="col-md-3" *ngFor="let item of listGeneralSystemCharacteristics;let i =index">
+      <div class="row">
+        <button type="button" class="btn btn-default form-control">{{item.description}}</button>
+      </div>
+      <div class="row">
+        <input type="text" class="form-control" value="0">
+      </div>
+    </div>   
+  </div>
 </div>
 
 

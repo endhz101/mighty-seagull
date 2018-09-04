@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
 import { TechnologyItem } from '../model/technologyItem.model';
+import { GeneralSystemCharacteristics } from '../model/generalSystemCharacteristics.model';
+import { GeneralSystemCharacteristicsDetails } from '../model/generalSystemCharacteristicsDetails.model';
+import { ProjectSummaryStorageServices } from '../data-storage-services/projectsummary.storage.services';
+import { ProjectSummaryServices } from '../data-services/projectsummary.services';
+import { Subscription } from 'rxjs';
 
 
 
@@ -23,10 +28,25 @@ export class ProjectSummaryComponent implements OnInit {
   selectedFrontend= [];
   selectedBackend= [];
   selectedStorage= [];
-  selectedReporting= [];
-  constructor() { }
+  selectedReporting = [];
+
+  //general System Characteristics
+  listGeneralSystemCharacteristics: GeneralSystemCharacteristics[] = [];
+  listGeneralSystemCharacteristicsDetails: GeneralSystemCharacteristicsDetails[] = [];
+
+  subscriptionGeneralSystemChar: Subscription;
+
+
+  constructor(private projectSummaryStorageServices: ProjectSummaryStorageServices, private projectSummaryServices:ProjectSummaryServices) { }
 
   ngOnInit() {
+
+
+    this.projectSummaryStorageServices.getGeneralSystemCharacteristics();
+    this.subscriptionGeneralSystemChar = this.projectSummaryServices.generalSystemCharacteristicsChanged
+      .subscribe((generalSystemCharacteristics: GeneralSystemCharacteristics[]) => {
+        this.listGeneralSystemCharacteristics = generalSystemCharacteristics;       
+      });
 
     this.architecture = [
       {
@@ -158,6 +178,8 @@ export class ProjectSummaryComponent implements OnInit {
       width: "100%",   
       name:'empPosition'
      }
+
+
 
 
   }
