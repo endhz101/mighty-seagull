@@ -140,12 +140,13 @@
 
   <div class="row  rowPadding">
     <div class="col-md-3" *ngFor="let item of listGeneralSystemCharacteristics;let i =index">
-      <div class="row">
-        <button type="button" class="btn btn-default form-control">{{item.description}}</button>
+      <div class="row btn-margin-form-control">
+        <button type="button" class="btn btn-primary form-control">{{item.description}}</button>
       </div>
       <div class="row">
         <input type="text" class="form-control" value="0">
       </div>
+      <br />
     </div>   
   </div>
 </div>

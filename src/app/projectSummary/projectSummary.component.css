@@ -34,3 +34,7 @@
 .marginright{
    margin-right:10px;
 }
+
+.btn-margin-form-control{
+  margin-bottom: 2px !important;
+}
