@@ -24,6 +24,7 @@ export class SharedComponent implements OnInit {
   constructor(private router: Router, private render: Renderer) { }
 
   ngOnInit() {
+
   }
 
   routeTo(item: NavUrl) {

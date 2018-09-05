@@ -8,7 +8,7 @@ import { ImplementationComponent } from './implementation/implementation.compone
 
 const appRoutes:Routes=[
     {path:'', redirectTo:'/projectsummary', pathMatch:'full'},
-    { path: 'projectsummary', component:ProjectSummaryComponent},
+    {path: 'projectsummary', component:ProjectSummaryComponent},
     {path: 'fpa', component:FpaComponent},
     {path: 'costmodel', component:CostmodelComponent},
     {path: 'estimation', component:EstimationComponent},
