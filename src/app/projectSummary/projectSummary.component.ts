@@ -18,32 +18,36 @@ import { TechnologyItemServices } from '../data-services/technologyItem.services
   templateUrl: './projectsummary.component.html',
   styleUrls: ['./projectsummary.component.css']
 })
-export class ProjectSummaryComponent implements OnInit, OnDestroy{
+export class ProjectSummaryComponent implements OnInit, OnDestroy {
   architecture: Array<Select2OptionData>;
   methodology: Array<Select2OptionData>;
   //Option
   frontendOption: Array<Select2OptionData>;
-  backendOption:Array<Select2OptionData>;
-  reportingOption:Array<Select2OptionData>;
-  storageOption:Array<Select2OptionData>;
-  selectOptions={};
+  backendOption: Array<Select2OptionData>;
+  reportingOption: Array<Select2OptionData>;
+  storageOption: Array<Select2OptionData>;
+  selectOptions = {};
   //Selected 
-  selectedFrontend= [];
-  selectedBackend= [];
-  selectedStorage= [];
+  selectedFrontend = [];
+  selectedBackend = [];
+  selectedStorage = [];
   selectedReporting = [];
+  startValue = 0;
 
   //general System Characteristics
   listGeneralSystemCharacteristics: GeneralSystemCharacteristics[] = [];
   listGeneralSystemCharacteristicsDetails: GeneralSystemCharacteristicsDetails[] = [];
 
   subscriptionGeneralSystemChar: Subscription;
-
+  subscriptionFrontend: Subscription;
+  subscriptionBackend: Subscription;
+  subscriptionStorage: Subscription;
+  subscriptionReporting: Subscription;
 
   constructor(private generalSystemCharacteristicsStorageServices: GeneralSystemCharacteristicsStorageServices,
     private generalSystemCharacteristicsServices: GeneralSystemCharacteristicsServices,
     private technologyItemStorage: TechnologyItemStorageServices,
-    private technologyItemServices:TechnologyItemServices) { }
+    private technologyItemServices: TechnologyItemServices) { }
 
   ngOnInit() {
 
@@ -52,11 +56,32 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy{
 
     //Technology List
     this.technologyItemStorage.getTechnologyItem(1);
+    this.technologyItemStorage.getTechnologyItem(2);
+    this.technologyItemStorage.getTechnologyItem(3);
+    this.technologyItemStorage.getTechnologyItem(4);
 
 
     this.subscriptionGeneralSystemChar = this.generalSystemCharacteristicsServices.generalSystemCharacteristicsChanged
       .subscribe((generalSystemCharacteristics: GeneralSystemCharacteristics[]) => {
-        this.listGeneralSystemCharacteristics = generalSystemCharacteristics;       
+        this.listGeneralSystemCharacteristics = generalSystemCharacteristics;
+      });
+     this.subscriptionFrontend = this.technologyItemServices.frontendTechnologyItemChanged
+       .subscribe((result: TechnologyItem[]) => {
+         this.frontendOption = this.assignOptionValue(result);        
+      });
+    this.subscriptionBackend = this.technologyItemServices.backendTechnologyItemChanged
+      .subscribe((result: TechnologyItem[]) => {
+        this.backendOption = this.assignOptionValue(result);
+      });
+
+    this.subscriptionStorage = this.technologyItemServices.storageTechnologyItemChanged
+      .subscribe((result: TechnologyItem[]) => {
+        this.storageOption = this.assignOptionValue(result);
+      });
+
+    this.subscriptionReporting = this.technologyItemServices.reportingTechnologyItemChanged
+      .subscribe((result: TechnologyItem[]) => {
+        this.reportingOption = this.assignOptionValue(result);
       });
 
     this.architecture = [
@@ -65,21 +90,21 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy{
         text: '3-Tier Architecture'
       },
       {
-        id: '2',     
+        id: '2',
         text: 'Mainframe'
-      } ,
+      },
       {
-        id: '2',   
+        id: '2',
         text: 'Midrange'
-      } ,
+      },
       {
-        id: '3',    
+        id: '3',
         text: 'Mobile Apps'
-      } ,
+      },
       {
-        id: '4',   
+        id: '4',
         text: 'SaaS in Cloud'
-      }  
+      }
     ];
     this.methodology = [
       {
@@ -88,73 +113,30 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy{
       },
       {
         id: '2',
-     
+
         text: 'Agile Scrum'
       },
       {
-        id: '3',     
+        id: '3',
         text: 'Others'
       }
     ];
-    this.frontendOption = [
-      {
-        id: '1',
-        text: 'Ionic/Angular'
-      },
-      {
-        id: '2',     
-        text: 'Html5'
-      },
-      {
-        id: '3',     
-        text: 'Jquery'
-      },
-      {
-        id: '4',     
-        text: 'ReactJS'
-      },
-      {
-        id: '5',     
-        text: 'VB / VBA'
-      }
-    ];
-    this.backendOption = [
-      {
-        id: '1',
-        text: 'ASP.Net'
-      },
-      {
-        id: '2',     
-        text: 'J2EE/Java'
-      },
-      {
-        id: '3',     
-        text: 'Stored Procedure'
-      },
-      {
-        id: '4',     
-        text: 'COBOL / Natural'
-      },
-      {
-        id: '5',     
-        text: 'C / C++'
-      }
-    ];
+ 
     this.reportingOption = [
       {
         id: '1',
         text: 'OBIEE'
       },
       {
-        id: '2',     
+        id: '2',
         text: 'Qlik'
       },
       {
-        id: '3',     
+        id: '3',
         text: 'Cognos'
       },
       {
-        id: '4',     
+        id: '4',
         text: 'Crystal Report'
       },
       {
@@ -168,86 +150,100 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy{
         text: 'RDBMS'
       },
       {
-        id: '2',     
+        id: '2',
         text: 'Postgres'
       },
       {
-        id: '3',     
+        id: '3',
         text: 'MSSQL'
       },
       {
-        id: '4',     
+        id: '4',
         text: 'MongoDB'
       },
       {
-        id: '5',     
+        id: '5',
         text: 'MySql'
       }
     ];
-    this.selectOptions={ 
+    this.selectOptions = {
       placeholder: { id: '', text: 'Select Record' },
-      width: "100%",   
-      name:'empPosition'
-     }
-
-
-
-
+      width: "100%",
+      name: 'empPosition'
+    }
   }
+
+  assignOptionValue(item: TechnologyItem[]) {
+    const tempData = [];
+    var data = {
+      'id': '',
+      'text': ''
+    }
+    tempData.push(data);
+    item.forEach(element => {
+      var data = {
+        'id': element.technologyItemId,
+        'text': element.description
+      }
+      tempData.push(data);
+    });
+    return tempData;
+  }
+
 
   ngOnDestroy() {
     this.subscriptionGeneralSystemChar.unsubscribe();
   }
-  fontendChanged(e: any): void {   
-
-    const item = new TechnologyItem(e.data[0].id,e.data[0].text)    
+  fontendChanged(e: any): void {
+    if (e.data[0].text.length > 0) {
+      const item = new TechnologyItem(e.data[0].id, e.data[0].text)
+      const exist = this.selectedFrontend.find(x => x.frontendId == item.technologyItemId);
+      if (exist == undefined) this.selectedFrontend.push(item);
+    }
     
-    const exist= this.selectedFrontend.find(x=>x.frontendId==item.technologyItemId);
-    if (exist==undefined) this.selectedFrontend.push(item);
   }
 
-  frontendSelectedRemove(index:number)
-  {
-    this.selectedFrontend.splice(index,1);
+  frontendSelectedRemove(index: number) {
+    this.selectedFrontend.splice(index, 1);
   }
 
-  backendChanged(e: any): void {   
-
-    const item = new TechnologyItem(e.data[0].id,e.data[0].text)        
-    const exist= this.selectedBackend.find(x=>x.back==item.technologyItemId);
-    if (exist==undefined) this.selectedBackend.push(item);
+  backendChanged(e: any): void {
+    if (e.data[0].text.length > 0) {
+      const item = new TechnologyItem(e.data[0].id, e.data[0].text)
+      const exist = this.selectedBackend.find(x => x.back == item.technologyItemId);
+      if (exist == undefined) this.selectedBackend.push(item);
+    }
   }
 
-  backendSelectedRemove(index:number)
-  {    
-    this.selectedBackend.splice(index,1);
+  backendSelectedRemove(index: number) {
+    this.selectedBackend.splice(index, 1);
   }
 
 
-  reportingChanged(e: any): void {   
-
-    const item = new TechnologyItem(e.data[0].id,e.data[0].text)        
-    const exist= this.selectedReporting.find(x=>x.back==item.technologyItemId);
-    if (exist==undefined) this.selectedReporting.push(item);
+  reportingChanged(e: any): void {
+    if (e.data[0].text.length > 0) {
+      const item = new TechnologyItem(e.data[0].id, e.data[0].text)
+      const exist = this.selectedReporting.find(x => x.back == item.technologyItemId);
+      if (exist == undefined) this.selectedReporting.push(item);
+    }
   }
 
-  reportingSelectedRemove(index:number)
-  {    
-    this.selectedReporting.splice(index,1);
+  reportingSelectedRemove(index: number) {
+    this.selectedReporting.splice(index, 1);
   }
 
-  storageChanged(e: any): void {   
-
-    const item = new TechnologyItem(e.data[0].id,e.data[0].text)        
-    const exist= this.selectedStorage.find(x=>x.back==item.technologyItemId);
-    if (exist==undefined) this.selectedStorage.push(item);
+  storageChanged(e: any): void {
+    if (e.data[0].text.length > 0) {
+      const item = new TechnologyItem(e.data[0].id, e.data[0].text)
+      const exist = this.selectedStorage.find(x => x.back == item.technologyItemId);
+      if (exist == undefined) this.selectedStorage.push(item);
+    }
   }
 
-  storageSelectedRemove(index:number)
-  {    
-    this.selectedStorage.splice(index,1);
+  storageSelectedRemove(index: number) {
+    this.selectedStorage.splice(index, 1);
   }
 
-  
+
 
 }

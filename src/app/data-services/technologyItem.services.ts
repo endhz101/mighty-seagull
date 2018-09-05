@@ -4,16 +4,49 @@ import { TechnologyItem } from "../model/technologyItem.model";
 
 
 export class TechnologyItemServices {
-  technologyItemChanged = new Subject<TechnologyItem[]>();
-  private technologyItem: TechnologyItem[] = [];
+  frontendTechnologyItemChanged = new Subject<TechnologyItem[]>();  
+  backendTechnologyItemChanged = new Subject<TechnologyItem[]>();
+  storageTechnologyItemChanged = new Subject<TechnologyItem[]>();
+  reportingTechnologyItemChanged = new Subject<TechnologyItem[]>();
 
-  setTechnologyItem(dbTechnologyItem: TechnologyItem[]) {
-    this.technologyItem = dbTechnologyItem;
-    this.technologyItemChanged.next(this.technologyItem.slice());
+  private frontendTechnologyItem: TechnologyItem[] = [];
+  private backendTechnologyItem: TechnologyItem[] = [];
+  private storageTechnologyItem: TechnologyItem[] = [];
+  private reportingTechnologyItem: TechnologyItem[] = [];
+
+  setFrontEndTechnologyItem(dbTechnologyItem: TechnologyItem[]) {
+    this.frontendTechnologyItem = dbTechnologyItem;
+    this.frontendTechnologyItemChanged.next(this.frontendTechnologyItem.slice());
   }
 
-  getTechnologyItem() {
-    return this.technologyItem.slice();
+  setBackEndTechnologyItem(dbTechnologyItem: TechnologyItem[]) {
+    this.backendTechnologyItem = dbTechnologyItem;
+    this.backendTechnologyItemChanged.next(this.backendTechnologyItem.slice());
+  }
+
+  setStorageTechnologyItem(dbTechnologyItem: TechnologyItem[]) {
+    this.storageTechnologyItem = dbTechnologyItem;
+    this.storageTechnologyItemChanged.next(this.storageTechnologyItem.slice());
+  }
+
+  setReportingTechnologyItem(dbTechnologyItem: TechnologyItem[]) {
+    this.reportingTechnologyItem = dbTechnologyItem;
+    this.reportingTechnologyItemChanged.next(this.reportingTechnologyItem.slice());
+  }
+
+
+
+  getFrontendTechnologyItem() {
+    return this.frontendTechnologyItem.slice();
+  }
+  getBackendTechnologyItem() {
+    return this.backendTechnologyItem.slice();
+  }
+  getStorageTechnologyItem() {
+    return this.storageTechnologyItem.slice();
+  }
+  getReportingTechnologyItem() {
+    return this.reportingTechnologyItem.slice();
   }
 
 }

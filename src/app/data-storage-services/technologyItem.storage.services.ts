@@ -17,8 +17,30 @@ export class TechnologyItemStorageServices {
 
           return technologyItem;
         }).subscribe(
-          (technologyItem: TechnologyItem[]) => {
-            this.technologyItem.setTechnologyItem(technologyItem);
+      (technologyItem: TechnologyItem[]) => {
+        console.log(technologyItem);
+            switch (index) {
+              case 1:
+                {
+                  this.technologyItem.setFrontEndTechnologyItem(technologyItem);
+                  break;
+                }
+              case 2:
+                {
+                  this.technologyItem.setBackEndTechnologyItem(technologyItem);
+                  break;
+                }
+              case 3:
+                {
+                  this.technologyItem.setStorageTechnologyItem(technologyItem);
+                  break;
+                }
+              case 4:
+                {
+                  this.technologyItem.setReportingTechnologyItem(technologyItem);
+                  break;
+                }
+            }
           });
   }
 
