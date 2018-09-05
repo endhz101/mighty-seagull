@@ -24,13 +24,24 @@ intput {
 }
 .page-heading{
   color: #044a8f;
-  font-size: 1.5rem;
-  margin-bottom: 0.5rem;
+  font-size:22px;
+  /*margin-bottom: 0.5rem;*/
   font-family: inherit;
   font-weight: 500;
   line-height: 1.2;
   padding-left: 50px;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
 }
+.btn-fpa{
+  float: right;
+  min-width: 83px;
+  margin-top: 10px;
+  margin-right: 10px;
+  font-size: 12px !important;
+}
+
 
 /** costmodel styles **/
 table {
@@ -43,6 +54,6 @@ td.mat-cell, td.mat-footer-cell, th.mat-header-cell {
   border-bottom-style: solid;
 }
 td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
-  padding-right: 24px;
-  border-right: solid 1px grey;
+  padding-right: 54px;
+  border-right: solid 1px red;
 }

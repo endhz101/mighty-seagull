@@ -1,7 +1,12 @@
-
 <div class="col-md-12 card" style="padding:0px;margin:0px">
+    <div class="row" style="padding-bottom:10px">
+      <div class="col-md-6"><p class="page-heading">Cost Model</p></div>
+      <div class="col-md-6">
+        <button type="button" class="btn btn-outline-primary btn-fpa">Print<i class="fa fa-print" aria-hidden="true" style="float:right; margin-left: 10px"></i></button>
+      </div>
+    </div>
   <div class="row">
-    <div class="col-md-4 "><p class="page-heading">Cost Model</p></div>
+    <div class="col-md-12">
       <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 table table-striped">
         <ng-container matColumnDef="onsite">
           <th mat-header-cell *matHeaderCellDef> ONSITE </th>
@@ -25,9 +30,7 @@
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-
       </table>
+    </div>
   </div>
 </div>
-
-
