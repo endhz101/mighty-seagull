@@ -7,23 +7,25 @@ import { ProjectSummaryServices } from '../data-services/projectsummary.services
 
 @Injectable()
 export class ProjectSummaryStorageServices {
-    token: string;
-    avatar :string;
-    constructor(private httpClient: HttpClient, private projectSummaryServices:ProjectSummaryServices) { }
+  token: string;
+  avatar: string;
+  constructor(private httpClient: HttpClient, private projectSummaryServices: ProjectSummaryServices) { }
 
-    getGeneralSystemCharacteristics() {
-     
-      this.httpClient.get('http://localhost:59258/api/GeneralSystemCharacteristic')
-            .map(
-               (generalSystemCharacteristic) => {                
-                 
-                  return generalSystemCharacteristic;
-                }).subscribe(
-                   (generalSystemCharacteristic: GeneralSystemCharacteristics[]) => {
-                     this.projectSummaryServices.setGeneralSystemCharacteristic(generalSystemCharacteristic);
-                });
-    }
+  getGeneralSystemCharacteristics() {
 
-  
+    this.httpClient.get('http://172.168.4.98:8090/api/GeneralSystemCharacteristic')
+      .map(
+        (generalSystemCharacteristic) => {
+
+          return generalSystemCharacteristic;
+        }).subscribe(
+          (generalSystemCharacteristic: GeneralSystemCharacteristics[]) => {
+            this.projectSummaryServices.setGeneralSystemCharacteristic(generalSystemCharacteristic);
+          });
+  }
+
+
+
+
 
 }
