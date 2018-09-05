@@ -6,6 +6,9 @@ import { GeneralSystemCharacteristicsDetails } from '../model/generalSystemChara
 import { Subscription } from 'rxjs';
 import { GeneralSystemCharacteristicsServices } from '../data-services/generalSystemCharacteristics.services';
 import { GeneralSystemCharacteristicsStorageServices } from '../data-storage-services/generalSystemCharacteristics.storage.services';
+import { TechnologyItemStorageServices } from '../data-storage-services/technologyItem.storage.services';
+import { TechnologyItemServices } from '../data-services/technologyItem.services';
+
 
 
 
@@ -37,7 +40,10 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy{
   subscriptionGeneralSystemChar: Subscription;
 
 
-  constructor(private generalSystemCharacteristicsStorageServices: GeneralSystemCharacteristicsStorageServices, private generalSystemCharacteristicsServices:GeneralSystemCharacteristicsServices) { }
+  constructor(private generalSystemCharacteristicsStorageServices: GeneralSystemCharacteristicsStorageServices,
+    private generalSystemCharacteristicsServices: GeneralSystemCharacteristicsServices,
+    private technologyItemStorage: TechnologyItemStorageServices,
+    private technologyItemServices:TechnologyItemServices) { }
 
   ngOnInit() {
 
@@ -45,7 +51,7 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy{
     this.generalSystemCharacteristicsStorageServices.getGeneralSystemCharacteristics();
 
     //Technology List
-    this.generalSystemCharacteristicsStorageServices.getTechnologyItem(1);
+    this.technologyItemStorage.getTechnologyItem(1);
 
 
     this.subscriptionGeneralSystemChar = this.generalSystemCharacteristicsServices.generalSystemCharacteristicsChanged

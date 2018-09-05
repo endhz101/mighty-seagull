@@ -22,18 +22,6 @@ export class GeneralSystemCharacteristicsStorageServices {
           });
   }
 
-  getTechnologyItem(index: number) {
 
-    this.httpClient.get('http://172.168.4.98:8090/api/TechnologyItems/GetTechnologyItemsByTTId/' + index)
-      .map(
-        (technologyItem) => {
-
-          return technologyItem;
-        }).subscribe(
-          (technologyItem: TechnologyItem[]) => {
-            //this.projectSummaryServices.setGeneralSystemCharacteristic(technologyItem);
-            console.log(technologyItem);
-          });
-  }
 
 }
