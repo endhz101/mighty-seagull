@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
 import { TechnologyItem } from '../model/technologyItem.model';
 import { GeneralSystemCharacteristics } from '../model/generalSystemCharacteristics.model';
 import { GeneralSystemCharacteristicsDetails } from '../model/generalSystemCharacteristicsDetails.model';
-import { ProjectSummaryStorageServices } from '../data-storage-services/projectsummary.storage.services';
-import { ProjectSummaryServices } from '../data-services/projectsummary.services';
 import { Subscription } from 'rxjs';
+import { GeneralSystemCharacteristicsServices } from '../data-services/generalSystemCharacteristics.services';
+import { GeneralSystemCharacteristicsStorageServices } from '../data-storage-services/generalSystemCharacteristics.storage.services';
 
 
 
@@ -15,7 +15,7 @@ import { Subscription } from 'rxjs';
   templateUrl: './projectsummary.component.html',
   styleUrls: ['./projectsummary.component.css']
 })
-export class ProjectSummaryComponent implements OnInit {
+export class ProjectSummaryComponent implements OnInit, OnDestroy{
   architecture: Array<Select2OptionData>;
   methodology: Array<Select2OptionData>;
   //Option
@@ -37,13 +37,18 @@ export class ProjectSummaryComponent implements OnInit {
   subscriptionGeneralSystemChar: Subscription;
 
 
-  constructor(private projectSummaryStorageServices: ProjectSummaryStorageServices, private projectSummaryServices:ProjectSummaryServices) { }
+  constructor(private generalSystemCharacteristicsStorageServices: GeneralSystemCharacteristicsStorageServices, private generalSystemCharacteristicsServices:GeneralSystemCharacteristicsServices) { }
 
   ngOnInit() {
 
 
-    this.projectSummaryStorageServices.getGeneralSystemCharacteristics();
-    this.subscriptionGeneralSystemChar = this.projectSummaryServices.generalSystemCharacteristicsChanged
+    this.generalSystemCharacteristicsStorageServices.getGeneralSystemCharacteristics();
+
+    //Technology List
+    this.generalSystemCharacteristicsStorageServices.getTechnologyItem(1);
+
+
+    this.subscriptionGeneralSystemChar = this.generalSystemCharacteristicsServices.generalSystemCharacteristicsChanged
       .subscribe((generalSystemCharacteristics: GeneralSystemCharacteristics[]) => {
         this.listGeneralSystemCharacteristics = generalSystemCharacteristics;       
       });
@@ -184,7 +189,9 @@ export class ProjectSummaryComponent implements OnInit {
 
   }
 
-
+  ngOnDestroy() {
+    this.subscriptionGeneralSystemChar.unsubscribe();
+  }
   fontendChanged(e: any): void {   
 
     const item = new TechnologyItem(e.data[0].id,e.data[0].text)    

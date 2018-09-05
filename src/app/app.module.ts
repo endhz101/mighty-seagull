@@ -12,9 +12,16 @@ import { EstimationComponent} from './estimation/estimation.component';
 import { HotTableModule} from '@handsontable/angular';
 import { ImplementationComponent} from './implementation/implementation.component'
 import { MatInputModule, MatTableModule, MatToolbarModule } from '@angular/material';
-import { ProjectSummaryStorageServices } from './data-storage-services/projectsummary.storage.services';
 import { HttpClientModule } from '@angular/common/http';
-import { ProjectSummaryServices } from './data-services/projectsummary.services';
+
+//Storage
+import { GeneralSystemCharacteristicsStorageServices } from './data-storage-services/generalSystemCharacteristics.storage.services';
+import { TechnologyItemStorageServices } from './data-storage-services/technologyItem.storage.services';
+//Services
+import { GeneralSystemCharacteristicsServices } from './data-services/generalSystemCharacteristics.services';
+import { TechnologyItemServices } from './data-services/technologyItem.services';
+
+
 
 @NgModule({
   declarations: [
@@ -34,7 +41,8 @@ import { ProjectSummaryServices } from './data-services/projectsummary.services'
     MatTableModule,
     HttpClientModule
   ],
-  providers: [ProjectSummaryStorageServices,ProjectSummaryServices],
+  providers: [GeneralSystemCharacteristicsStorageServices,
+    GeneralSystemCharacteristicsServices, TechnologyItemServices, TechnologyItemStorageServices],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
