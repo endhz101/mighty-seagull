@@ -1,3 +1,47 @@
-<p>
-  estimation works!
-</p>
+<div class="col-md-12 card" style="padding:0px;margin:0px">
+<div class="row">
+<div class="col-md-4">
+<p class="est-page-heading">Project Estimation</p>
+</div>
+<div class="col-md-8">
+<button type="button" class="btn btn-outline-primary btn-fpa" id="printButton">Print<i class="fa fa-print" aria-hidden="true" style="margin-left: 10px"></i></button>
+</div>
+</div>
+
+<div class="row" id="estTable">
+  <div class="col-md-12">
+
+    <table class="table table-striped" >
+      <tr>
+        <td>MODULE</td>
+        <td>DESCRIPTION</td>
+        <td>TYPE</td>
+        <td>TTL EFFORTS MD</td>
+        <td>PM</td>
+        <td>UI/UX</td>
+        <td>SA&D</td>
+        <td>SIT,UAT,OAT</td>
+        <td>DOCUMENTATION</td>
+        <td>TRAINING</td>
+        <td>ROLLOUT</td>
+        <td>NURSING</td>
+        <td>TOTAL MD</td>
+      </tr>
+      <tr *ngFor="let estimation of estimations">
+        <td>{{estimation.module}}</td>
+        <td>{{estimation.description}}</td>
+        <td>{{estimation.type}}</td>
+        <td>{{estimation.effort}}</td>
+        <td>{{estimation.pm}}</td>
+        <td>{{estimation.ui}}</td>
+        <td>{{estimation.sa}}</td>
+        <td>{{estimation.sit}}</td>
+        <td>{{estimation.documentation}}</td>
+        <td>{{estimation.training}}</td>
+        <td>{{estimation.rollout}}</td>
+        <td>{{estimation.nursing}}</td>
+        <td>{{estimation.total}}</td>
+      </tr>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,25 @@
+
+th {
+  text-align: center;
+  width: 7.5%;
+  /*background-color: gainsboro;*/
+}
+
+td {
+  width: 7.5%;
+  border-bottom-width: 0;
+  text-align: center;
+}
+
+.est-page-heading {
+  color: #044a8f;
+  font-size: 30px;
+  /*margin-bottom: 0.5rem;*/
+  font-family: inherit;
+  font-weight: 500;
+  line-height: 1.2;
+  padding-left: 50px;
+  top: 50%;
+  transform: translateY(-50%);
+  margin-top: 1em;
+}
