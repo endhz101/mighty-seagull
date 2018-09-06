@@ -30,3 +30,11 @@
 .paddingtop{
     padding-top: 2px;
 }
+
+.marginright{
+   margin-right:10px;
+}
+
+.btn-margin-form-control{
+  margin-bottom: 2px !important;
+}
