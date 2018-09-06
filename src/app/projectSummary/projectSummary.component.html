@@ -56,7 +56,7 @@
       <label >Frontend Technology</label>
       <select2 [data]="frontendOption"
                [options]="selectOptions"
-               [value]="startValue"
+               [value]="0"
                (valueChanged)="fontendChanged($event)"></select2>
     </div>
     <div class="col-md-6">
@@ -141,7 +141,7 @@
   <div class="row  rowPadding">
     <div class="col-md-3" *ngFor="let item of listGeneralSystemCharacteristics;let i =index">
       <div class="row btn-margin-form-control">
-        <button type="button" class="btn btn-outline-primary form-control">{{item.description}}</button>
+        <button type="button" class="btn btn-outline-primary form-control" (click)="onGeneralSystemCharacteristic(item)">{{item.description}}</button>
       </div>
       <div class="row">
         <input type="text" class="form-control" value="0">
@@ -150,3 +150,27 @@
     </div>   
   </div>
 </div>
+
+
+<div class="modal" tabindex="-1" role="dialog" id="modalGeneralSystemCharacteristic">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">{{ generalSystemCharacteristicTitle }}</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-md-12" *ngFor="let item of listGeneralSystemCharacteristicsDetails;let i=index ">
+          <input type="radio" ng-model="myVar" name="myVar"  value="{{item.generalSystemCharacteristicDetailsId}}" />{{ item.characteristic}} 
+        </div>           
+      </div>
+      <div class="modal-footer text-center">
+        <button type="button" class="btn btn-primary text-center">OK</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+

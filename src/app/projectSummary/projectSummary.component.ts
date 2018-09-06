@@ -1,17 +1,18 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Select2OptionData } from 'ng2-select2';
+import { Subscription } from 'rxjs';
 import { TechnologyItem } from '../model/technologyItem.model';
 import { GeneralSystemCharacteristics } from '../model/generalSystemCharacteristics.model';
-import { GeneralSystemCharacteristicsDetails } from '../model/generalSystemCharacteristicsDetails.model';
-import { Subscription } from 'rxjs';
+import { GeneralSystemCharacteristicDetails } from '../model/generalSystemCharacteristicDetails.model';
 import { GeneralSystemCharacteristicsServices } from '../data-services/generalSystemCharacteristics.services';
 import { GeneralSystemCharacteristicsStorageServices } from '../data-storage-services/generalSystemCharacteristics.storage.services';
 import { TechnologyItemStorageServices } from '../data-storage-services/technologyItem.storage.services';
 import { TechnologyItemServices } from '../data-services/technologyItem.services';
+import { GeneralSystemCharacteristicDetailsServices } from '../data-services/generalSystemCharacteristicDetails.services';
+import { GeneralSystemCharacteristicDetailsStorage } from '../data-storage-services/generalSystemCharacteristicDetails.storage.services';
 
 
-
-
+declare var $: any;
 
 @Component({
   selector: 'app-projectsummary',
@@ -32,22 +33,27 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy {
   selectedBackend = [];
   selectedStorage = [];
   selectedReporting = [];
-  startValue = 0;
+
 
   //general System Characteristics
   listGeneralSystemCharacteristics: GeneralSystemCharacteristics[] = [];
-  listGeneralSystemCharacteristicsDetails: GeneralSystemCharacteristicsDetails[] = [];
+  listGeneralSystemCharacteristicsDetails: GeneralSystemCharacteristicDetails[] = [];
+  generalSystemCharacteristicTitle: string;
+
 
   subscriptionGeneralSystemChar: Subscription;
   subscriptionFrontend: Subscription;
   subscriptionBackend: Subscription;
   subscriptionStorage: Subscription;
   subscriptionReporting: Subscription;
+  subscriptiongGeneralSystemCharDetails:Subscription;
 
   constructor(private generalSystemCharacteristicsStorageServices: GeneralSystemCharacteristicsStorageServices,
     private generalSystemCharacteristicsServices: GeneralSystemCharacteristicsServices,
     private technologyItemStorage: TechnologyItemStorageServices,
-    private technologyItemServices: TechnologyItemServices) { }
+    private technologyItemServices: TechnologyItemServices,
+    private generalSystemCharacteristicDetailsServices: GeneralSystemCharacteristicDetailsServices,
+    private generalSystemCharacteristicDetailsStorage:GeneralSystemCharacteristicDetailsStorage ) { }
 
   ngOnInit() {
 
@@ -59,7 +65,6 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy {
     this.technologyItemStorage.getTechnologyItem(2);
     this.technologyItemStorage.getTechnologyItem(3);
     this.technologyItemStorage.getTechnologyItem(4);
-
 
     this.subscriptionGeneralSystemChar = this.generalSystemCharacteristicsServices.generalSystemCharacteristicsChanged
       .subscribe((generalSystemCharacteristics: GeneralSystemCharacteristics[]) => {
@@ -82,6 +87,13 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy {
     this.subscriptionReporting = this.technologyItemServices.reportingTechnologyItemChanged
       .subscribe((result: TechnologyItem[]) => {
         this.reportingOption = this.assignOptionValue(result);
+      });
+
+
+    this.subscriptiongGeneralSystemCharDetails = this.generalSystemCharacteristicDetailsServices.generalSystemCharacteristicDetailsChanged
+      .subscribe((result: GeneralSystemCharacteristicDetails[]) => {
+        this.listGeneralSystemCharacteristicsDetails = result;
+        
       });
 
     this.architecture = [
@@ -193,6 +205,11 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy {
 
   ngOnDestroy() {
     this.subscriptionGeneralSystemChar.unsubscribe();
+    this.subscriptionFrontend.unsubscribe();
+    this.subscriptionBackend.unsubscribe();
+    this.subscriptionStorage.unsubscribe();
+    this.subscriptionReporting.unsubscribe();
+    this.subscriptionReporting.unsubscribe();
   }
   fontendChanged(e: any): void {
     if (e.data[0].text.length > 0) {
@@ -244,6 +261,11 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy {
     this.selectedStorage.splice(index, 1);
   }
 
+  onGeneralSystemCharacteristic(item: GeneralSystemCharacteristics) {
+    this.generalSystemCharacteristicTitle = item.description;
+    this.generalSystemCharacteristicDetailsStorage.getGeneralSystemCharacteristicDetails(item.generalSystemCharacteristicId);
+    $('#modalGeneralSystemCharacteristic').modal("show");
+  }
 
 
 }
