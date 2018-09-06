@@ -39,6 +39,7 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy {
   listGeneralSystemCharacteristics: GeneralSystemCharacteristics[] = [];
   listGeneralSystemCharacteristicsDetails: GeneralSystemCharacteristicDetails[] = [];
   generalSystemCharacteristicTitle: string;
+  optionSelected: number;
 
 
   subscriptionGeneralSystemChar: Subscription;
@@ -262,10 +263,18 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy {
   }
 
   onGeneralSystemCharacteristic(item: GeneralSystemCharacteristics) {
+   
     this.generalSystemCharacteristicTitle = item.description;
     this.generalSystemCharacteristicDetailsStorage.getGeneralSystemCharacteristicDetails(item.generalSystemCharacteristicId);
     $('#modalGeneralSystemCharacteristic').modal("show");
   }
+  getRadioSelected() {
+        
+  }
 
+  onItemChange(item:number) {
+    console.log(item);
+    this.optionSelected = item;
+  }
 
 }
