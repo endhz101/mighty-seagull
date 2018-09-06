@@ -11,7 +11,7 @@ export class GeneralSystemCharacteristicsStorageServices {
 
   getGeneralSystemCharacteristics() {
 
-    this.httpClient.get('http://localhost:59258/api/GeneralSystemCharacteristic')
+    this.httpClient.get('http://172.168.4.98:8090/api/GeneralSystemCharacteristic')
       .map(
         (response) => {
           return response;

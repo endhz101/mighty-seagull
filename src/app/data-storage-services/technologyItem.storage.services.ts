@@ -11,7 +11,7 @@ export class TechnologyItemStorageServices {
 
   getTechnologyItem(index: number) {
 
-    this.httpClient.get('http://localhost:59258/api/TechnologyItems/GetTechnologyItemsByTTId/' + index)
+    this.httpClient.get('http://172.168.4.98:8090/api/TechnologyItems/GetTechnologyItemsByTTId/' + index)
       .map(
         (response) => {
 
