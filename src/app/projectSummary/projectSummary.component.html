@@ -1,25 +1,25 @@
 <div class="col-md-12 card" style="padding:0px;margin:0px">
-  <div class="col-md-12" style="padding-top:5px">
-    <strong style="color:darkblue">Project Estimation</strong>
+  <div class="col-md-12 project-sumarry-header">
+    <p>Project Estimation</p>
   </div>
   <hr>
   <div class="col-md-12">
-    <p>Resource Estimation for Development Project</p>
+    <p>Resource Estimation for Development Project</p>    
   </div>
 
 
   <div class="row  rowPadding">
     <div class="col-md-4">
       <label >Project ID</label>
-      <input type="text" class="form-control" placeholder="Project ID">
+      <input type="text" class="form-control project-sumarry-input" placeholder="Project ID">
     </div>
     <div class="col-md-4">
       <label >Project Name</label>
-      <input type="text" class="form-control" placeholder="Project Name">
+      <input type="text" class="form-control project-sumarry-input" placeholder="Project Name">
     </div>
     <div class="col-md-4">
       <label >Date</label>
-      <input type="text" class="form-control" placeholder="Date">
+      <input type="text" class="form-control project-sumarry-input" placeholder="Date">
     </div>
   </div>
 
@@ -38,13 +38,13 @@
     </div>
     <div class="col-md-4">
       <label >Estimation Period</label>
-      <input type="text" class="form-control" placeholder="Estimation Period">
+      <input type="text" class="form-control project-sumarry-input" placeholder="Estimation Period">
     </div>
   </div>
   <div class="row  rowPadding">
     <div class="col-md-4">
       <label>Project Duration</label>
-      <input type="text" class="form-control" placeholder="Project Duration">
+      <input type="text" class="form-control project-sumarry-input" placeholder="Project Duration">
     </div>
   </div>
   <br>
@@ -141,7 +141,7 @@
   <div class="row  rowPadding">
     <div class="col-md-3" *ngFor="let item of listGeneralSystemCharacteristics;let i =index">
       <div class="row btn-margin-form-control">
-        <button type="button" class="btn btn-primary form-control" (click)="onGeneralSystemCharacteristic(item)">{{item.description}}</button>
+        <button type="button" class="btn btn-outline-primary form-control" (click)="onGeneralSystemCharacteristic(item)">{{item.description}}</button>
       </div>
       <div class="row">
         <input type="text" class="form-control" value="0">
