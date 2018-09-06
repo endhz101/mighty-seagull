@@ -10,8 +10,16 @@ import { AppRoutingModule } from './app.routing.module';
 import { Select2Module } from 'ng2-select2';
 import { EstimationComponent} from './estimation/estimation.component';
 import { HotTableModule} from '@handsontable/angular';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { ImplementationComponent} from './implementation/implementation.component'
-import { MatInputModule, MatTableModule, MatToolbarModule } from '@angular/material';
+// import { MatInputModule, MatTableModule, MatToolbarModule } from '@angular/material';
+import {
+  MatPaginatorModule,
+  MatSelectModule,
+  MatSortModule,
+  MatTableModule
+} from '@angular/material';
+import { ProjectSummaryStorageServices } from './data-storage-services/projectsummary.storage.services';
 import { HttpClientModule } from '@angular/common/http';
 
 //Storage
@@ -23,6 +31,7 @@ import { GeneralSystemCharacteristicsServices } from './data-services/generalSys
 import { TechnologyItemServices } from './data-services/technologyItem.services';
 import { GeneralSystemCharacteristicDetailsServices } from './data-services/generalSystemCharacteristicDetails.services';
 
+import { ImplementationService } from './data-services/implementation.services'
 
 
 
@@ -41,13 +50,17 @@ import { GeneralSystemCharacteristicDetailsServices } from './data-services/gene
     AppRoutingModule,
     Select2Module,
     HotTableModule,
+    MatPaginatorModule,
     MatTableModule,
-    HttpClientModule
+    MatSortModule,
+    HttpClientModule,
+    MatSelectModule,
+    BrowserAnimationsModule
   ],
   providers: [GeneralSystemCharacteristicsStorageServices,
     GeneralSystemCharacteristicsServices, TechnologyItemServices,
     TechnologyItemStorageServices, GeneralSystemCharacteristicDetailsServices,
-    GeneralSystemCharacteristicDetailsStorage],
+    GeneralSystemCharacteristicDetailsStorage,ImplementationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
