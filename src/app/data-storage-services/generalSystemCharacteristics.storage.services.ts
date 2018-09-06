@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import 'rxjs-compat';
 import { GeneralSystemCharacteristics } from '../model/generalSystemCharacteristics.model';
-import { TechnologyItem } from '../model/technologyItem.model';
 import { GeneralSystemCharacteristicsServices } from '../data-services/generalSystemCharacteristics.services';
 
 
@@ -12,13 +11,13 @@ export class GeneralSystemCharacteristicsStorageServices {
 
   getGeneralSystemCharacteristics() {
 
-    this.httpClient.get('http://172.168.4.98:8090/api/GeneralSystemCharacteristic')
+    this.httpClient.get('http://localhost:59258/api/GeneralSystemCharacteristic')
       .map(
-        (generalSystemCharacteristic) => {
-          return generalSystemCharacteristic;
+        (response) => {
+          return response;
         }).subscribe(
-          (generalSystemCharacteristic: GeneralSystemCharacteristics[]) => {
-            this.generalSystemCharacteristicsServices.setGeneralSystemCharacteristic(generalSystemCharacteristic);
+          (result: GeneralSystemCharacteristics[]) => {
+            this.generalSystemCharacteristicsServices.setGeneralSystemCharacteristic(result);
           });
   }
 

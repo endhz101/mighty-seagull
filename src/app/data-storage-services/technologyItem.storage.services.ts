@@ -11,33 +11,32 @@ export class TechnologyItemStorageServices {
 
   getTechnologyItem(index: number) {
 
-    this.httpClient.get('http://172.168.4.98:8090/api/TechnologyItems/GetTechnologyItemsByTTId/' + index)
+    this.httpClient.get('http://localhost:59258/api/TechnologyItems/GetTechnologyItemsByTTId/' + index)
       .map(
-        (technologyItem) => {
+        (response) => {
 
-          return technologyItem;
+          return response;
         }).subscribe(
-      (technologyItem: TechnologyItem[]) => {
-        console.log(technologyItem);
+      (result: TechnologyItem[]) => {
             switch (index) {
               case 1:
                 {
-                  this.technologyItem.setFrontEndTechnologyItem(technologyItem);
+                  this.technologyItem.setFrontEndTechnologyItem(result);
                   break;
                 }
               case 2:
                 {
-                  this.technologyItem.setBackEndTechnologyItem(technologyItem);
+                  this.technologyItem.setBackEndTechnologyItem(result);
                   break;
                 }
               case 3:
                 {
-                  this.technologyItem.setStorageTechnologyItem(technologyItem);
+                  this.technologyItem.setStorageTechnologyItem(result);
                   break;
                 }
               case 4:
                 {
-                  this.technologyItem.setReportingTechnologyItem(technologyItem);
+                  this.technologyItem.setReportingTechnologyItem(result);
                   break;
                 }
             }

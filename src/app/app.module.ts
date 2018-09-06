@@ -17,9 +17,12 @@ import { HttpClientModule } from '@angular/common/http';
 //Storage
 import { GeneralSystemCharacteristicsStorageServices } from './data-storage-services/generalSystemCharacteristics.storage.services';
 import { TechnologyItemStorageServices } from './data-storage-services/technologyItem.storage.services';
+import { GeneralSystemCharacteristicDetailsStorage } from './data-storage-services/generalSystemCharacteristicDetails.storage.services';
 //Services
 import { GeneralSystemCharacteristicsServices } from './data-services/generalSystemCharacteristics.services';
 import { TechnologyItemServices } from './data-services/technologyItem.services';
+import { GeneralSystemCharacteristicDetailsServices } from './data-services/generalSystemCharacteristicDetails.services';
+
 
 
 
@@ -42,7 +45,9 @@ import { TechnologyItemServices } from './data-services/technologyItem.services'
     HttpClientModule
   ],
   providers: [GeneralSystemCharacteristicsStorageServices,
-    GeneralSystemCharacteristicsServices, TechnologyItemServices, TechnologyItemStorageServices],
+    GeneralSystemCharacteristicsServices, TechnologyItemServices,
+    TechnologyItemStorageServices, GeneralSystemCharacteristicDetailsServices,
+    GeneralSystemCharacteristicDetailsStorage],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

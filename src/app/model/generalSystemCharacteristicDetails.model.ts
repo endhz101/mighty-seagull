@@ -1,4 +1,4 @@
-export class GeneralSystemCharacteristicsDetails {
+export class GeneralSystemCharacteristicDetails {
   public generalSystemCharacteristicDetailsId: number;
   public generalSystemCharacteristicId: number;
   public characteristic: string;
