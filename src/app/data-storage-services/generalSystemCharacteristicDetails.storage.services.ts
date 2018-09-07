@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import 'rxjs-compat';
 import { GeneralSystemCharacteristicDetailsServices } from '../data-services/generalSystemCharacteristicDetails.services';
 import { GeneralSystemCharacteristicDetails } from '../model/generalSystemCharacteristicDetails.model';
+import { environment } from '../../environments/environment';
 
 
 
@@ -12,15 +13,15 @@ export class GeneralSystemCharacteristicDetailsStorage {
 
   getGeneralSystemCharacteristicDetails(index:number) {
 
-    this.httpClient.get('http://172.168.4.98:8090/api/GeneralSystemCharacteristicDetails/GetByGeneralCharacteristicId/'+index)
+    this.httpClient.get(environment.REST_API_URL +'api/GeneralSystemCharacteristicDetails/GetByGeneralCharacteristicId/'+index)
       .map(
         (response) => {
           return response;
         }).subscribe(
-      (result: GeneralSystemCharacteristicDetails[]) => {
+      (result: any[]) => {        
             this.generalSystemCharacteristicDetailsServices.setGeneralSystemCharacteristicDetails(result);
           });
-  }
+   }
 
 
 

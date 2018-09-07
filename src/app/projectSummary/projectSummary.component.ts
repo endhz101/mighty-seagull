@@ -39,7 +39,10 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy {
   listGeneralSystemCharacteristics: GeneralSystemCharacteristics[] = [];
   listGeneralSystemCharacteristicsDetails: GeneralSystemCharacteristicDetails[] = [];
   generalSystemCharacteristicTitle: string;
-  optionSelected: number;
+  optionSelected: string;
+  generalSystemCharacteristicsSelectedIndex: number;
+  generalSystemCharacteristicsSelected: GeneralSystemCharacteristics;
+  generalSystemCharacteristicsPoints: number = null;
 
 
   subscriptionGeneralSystemChar: Subscription;
@@ -47,14 +50,14 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy {
   subscriptionBackend: Subscription;
   subscriptionStorage: Subscription;
   subscriptionReporting: Subscription;
-  subscriptiongGeneralSystemCharDetails:Subscription;
+  subscriptiongGeneralSystemCharDetails: Subscription;
 
   constructor(private generalSystemCharacteristicsStorageServices: GeneralSystemCharacteristicsStorageServices,
     private generalSystemCharacteristicsServices: GeneralSystemCharacteristicsServices,
     private technologyItemStorage: TechnologyItemStorageServices,
     private technologyItemServices: TechnologyItemServices,
     private generalSystemCharacteristicDetailsServices: GeneralSystemCharacteristicDetailsServices,
-    private generalSystemCharacteristicDetailsStorage:GeneralSystemCharacteristicDetailsStorage ) { }
+    private generalSystemCharacteristicDetailsStorage: GeneralSystemCharacteristicDetailsStorage) { }
 
   ngOnInit() {
 
@@ -71,9 +74,9 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy {
       .subscribe((generalSystemCharacteristics: GeneralSystemCharacteristics[]) => {
         this.listGeneralSystemCharacteristics = generalSystemCharacteristics;
       });
-     this.subscriptionFrontend = this.technologyItemServices.frontendTechnologyItemChanged
-       .subscribe((result: TechnologyItem[]) => {
-         this.frontendOption = this.assignOptionValue(result);        
+    this.subscriptionFrontend = this.technologyItemServices.frontendTechnologyItemChanged
+      .subscribe((result: TechnologyItem[]) => {
+        this.frontendOption = this.assignOptionValue(result);
       });
     this.subscriptionBackend = this.technologyItemServices.backendTechnologyItemChanged
       .subscribe((result: TechnologyItem[]) => {
@@ -92,9 +95,12 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy {
 
 
     this.subscriptiongGeneralSystemCharDetails = this.generalSystemCharacteristicDetailsServices.generalSystemCharacteristicDetailsChanged
-      .subscribe((result: GeneralSystemCharacteristicDetails[]) => {
-        this.listGeneralSystemCharacteristicsDetails = result;
-        
+      .subscribe((result: GeneralSystemCharacteristicDetails[]) => { 
+        this.listGeneralSystemCharacteristicsDetails = result;   
+        if (this.generalSystemCharacteristicsPoints) {
+          const checkActive = this.listGeneralSystemCharacteristicsDetails.findIndex(x => x.points == this.generalSystemCharacteristicsPoints);
+          this.listGeneralSystemCharacteristicsDetails[checkActive].activeStatus = "checked";
+        }
       });
 
     this.architecture = [
@@ -134,7 +140,7 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy {
         text: 'Others'
       }
     ];
- 
+
     this.reportingOption = [
       {
         id: '1',
@@ -218,7 +224,7 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy {
       const exist = this.selectedFrontend.find(x => x.frontendId == item.technologyItemId);
       if (exist == undefined) this.selectedFrontend.push(item);
     }
-    
+
   }
 
   frontendSelectedRemove(index: number) {
@@ -262,19 +268,37 @@ export class ProjectSummaryComponent implements OnInit, OnDestroy {
     this.selectedStorage.splice(index, 1);
   }
 
-  onGeneralSystemCharacteristic(item: GeneralSystemCharacteristics) {
-   
+  onGeneralSystemCharacteristic(item: GeneralSystemCharacteristics, index: number) {
+    this.generalSystemCharacteristicsPoints = item.points;
     this.generalSystemCharacteristicTitle = item.description;
+    this.generalSystemCharacteristicsSelected = item;
+    this.generalSystemCharacteristicsSelectedIndex = index;
+
     this.generalSystemCharacteristicDetailsStorage.getGeneralSystemCharacteristicDetails(item.generalSystemCharacteristicId);
     $('#modalGeneralSystemCharacteristic').modal("show");
   }
   getRadioSelected() {
-        
+    var points = this.generalSystemCharacteristicsSelected.points;
+    console.log(this.optionSelected);
+    if (this.optionSelected) {
+      points = this.optionSelected;
+    }
+    const item = new GeneralSystemCharacteristics(this.generalSystemCharacteristicsSelected.generalSystemCharacteristicId, this.generalSystemCharacteristicsSelected.description, points);
+    this.updateOption(this.generalSystemCharacteristicsSelectedIndex, item);
+  //  this.listGeneralSystemCharacteristicsDetails = [];
   }
 
-  onItemChange(item:number) {
-    console.log(item);
-    this.optionSelected = item;
+  updateOption(index: number, newData: GeneralSystemCharacteristics) {
+    this.listGeneralSystemCharacteristics[index] = newData;
+    $('#modalGeneralSystemCharacteristic').modal("hide");
+    this.generalSystemCharacteristicsSelected = new GeneralSystemCharacteristics(null, null, null);
+    this.generalSystemCharacteristicsSelectedIndex = null;
+    this.generalSystemCharacteristicsPoints = null;
+    this.optionSelected = null;
+  }
+
+  onItemChange(item: number) {
+    this.optionSelected = item.toString();
   }
 
 }

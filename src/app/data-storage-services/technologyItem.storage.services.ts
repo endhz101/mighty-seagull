@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import 'rxjs-compat';
 import { TechnologyItem } from '../model/technologyItem.model';
 import { TechnologyItemServices } from '../data-services/technologyItem.services';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
@@ -11,7 +12,7 @@ export class TechnologyItemStorageServices {
 
   getTechnologyItem(index: number) {
 
-    this.httpClient.get('http://172.168.4.98:8090/api/TechnologyItems/GetTechnologyItemsByTTId/' + index)
+    this.httpClient.get(environment.REST_API_URL +'api/TechnologyItems/GetTechnologyItemsByTTId/' + index)
       .map(
         (response) => {
 

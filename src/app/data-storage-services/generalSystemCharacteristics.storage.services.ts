@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import 'rxjs-compat';
 import { GeneralSystemCharacteristics } from '../model/generalSystemCharacteristics.model';
 import { GeneralSystemCharacteristicsServices } from '../data-services/generalSystemCharacteristics.services';
+import { environment } from '../../environments/environment';
 
 
 @Injectable()
@@ -11,7 +12,7 @@ export class GeneralSystemCharacteristicsStorageServices {
 
   getGeneralSystemCharacteristics() {
 
-    this.httpClient.get('http://172.168.4.98:8090/api/GeneralSystemCharacteristic')
+    this.httpClient.get(environment.REST_API_URL +'api/GeneralSystemCharacteristic')
       .map(
         (response) => {
           return response;

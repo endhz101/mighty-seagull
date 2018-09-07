@@ -141,10 +141,10 @@
   <div class="row  rowPadding">
     <div class="col-md-3" *ngFor="let item of listGeneralSystemCharacteristics;let i =index">
       <div class="row btn-margin-form-control">
-        <button type="button" class="btn btn-outline-primary form-control" (click)="onGeneralSystemCharacteristic(item)">{{item.description}}</button>
+        <button type="button" class="btn btn-outline-primary form-control" (click)="onGeneralSystemCharacteristic(item,i)">{{item.description}}</button>
       </div>
-      <div class="row">
-        <input type="text" class="form-control" value="0">
+      <div class="row btn-margin-form-control">
+        <input type="text" class="form-control" value="{{item.points}}">
       </div>
       <br />
     </div>   
@@ -162,8 +162,8 @@
         </button>
       </div>
       <div class="modal-body">
-        <div class="col-md-12" *ngFor="let item of listGeneralSystemCharacteristicsDetails;let i=index ">
-          <input type="radio"  name="myVar"  value="{{item.points}}"  (change)="onItemChange(item.points)" />{{ item.characteristic}} 
+        <div class="col-md-12 radioPadding" *ngFor="let item of listGeneralSystemCharacteristicsDetails;let i=index ">
+          <input type="radio"  name="myVar"  value="{{item.points}}" checked="{{item.activeStatus}}" (change)="onItemChange(item.points)" />{{ item.characteristic}} 
         </div>           
       </div>
       <div class="modal-footer text-center">
