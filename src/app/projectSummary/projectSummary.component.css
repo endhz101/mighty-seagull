@@ -38,4 +38,10 @@
 .btn-margin-form-control{
   margin-bottom: 2px !important;
 }
-
+.form-control{
+    margin-left: 0 !important
+}
+.select2-container--default .select2-selection--single {
+    background-color: red !important;
+    border-radius: 50%
+}
